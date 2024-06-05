@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select a Tank</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+</head>
+<body>
+    <h1>Select a Tank</h1>
+    <form action="/setTank" method="post">
+        <label for="tankSelect">Select a tank:</label>
+        <select id="tankSelect" name="selected_tank_id">
+            {% for tank in tanks %}
+            <option value="{{ tank.id }}">{{ tank.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Set Tank</button>
+    </form>
+</body>
+</html>

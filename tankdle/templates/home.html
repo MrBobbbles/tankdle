@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Database</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+</head>
+<body>
+    <h1>Tank Database</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Year First Built</th>
+            <th>Year Entered Service</th>
+            <th>Origin</th>
+            <th>Number Built</th>
+            <th>Weight</th>
+            <th>Engine Power</th>
+        </tr>
+        {% for tank in tanks %}
+        <tr>
+            <td>{{ tank.name }}</td>
+            <td>{{ tank.year_first_built }}</td>
+            <td>{{ tank.year_entered_service }}</td>
+            <td>{{ tank.origin }}</td>
+            <td>{{ tank.number_built }}</td>
+            <td>{{ tank.weight }}</td>
+            <td>{{ tank.engine_power }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

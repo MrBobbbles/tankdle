@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Tank Comparison</title>
+</head>
+<body>
+    <h1>Tank Comparison</h1>
+    <form id="tankForm">
+        <label for="tankSelect">Select a tank:</label>
+        <select id="tankSelect" name="tankSelect">
+            {% for tank in tanks %}
+            <option value="{{ tank.id }}">{{ tank.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Compare</button>
+    </form>
+    <div id="comparisonResult"></div>
+
+    <script>
+        document.getElementById('tankForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var selectedTankId = document.getElementById('tankSelect').value;
+            fetch('/compare', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                var comparisonResultElement = document.getElementById('comparisonResult');
+                comparisonResultElement.innerHTML = `
+                    <h2>Comparison Result</h2>
+                    <p>Selected Tank: ${data.selected_tank.name}</p>
+                    <p>Randomly Selected Tank: ${data.random_tank.name}</p>
+                    <p>Properties Match:</p>
+                    <ul>
+                        <li>Name: ${data.is_same_properties.name}</li>
+                        <li>Year First Built: ${data.is_same_properties.year_first_built}</li>
+                        <li>Year Entered Service: ${data.is_same_properties.year_entered_service}</li>
+                        <li>Origin: ${data.is_same_properties.origin}</li>
+                        <li>Number Built: ${data.is_same_properties.number_built}</li>
+                    </ul>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

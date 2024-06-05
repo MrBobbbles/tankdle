@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b1b;
+    color: white;
+}
+h1 {
+    text-align: center;
+}
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+label {
+    margin-right: 10px;
+}
+select, button {
+    padding: 5px;
+    font-size: 16px;
+}
+#comparisonResult {
+    display: flex;
+    justify-content: center;
+}
+.comparison-table {
+    display: table;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+.comparison-row {
+    display: table-row;
+}
+.comparison-cell {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #333;
+    text-align: center;
+}
+.header-cell {
+    background-color: #333;
+    font-weight: bold;
+}
+.highlight-true {
+    background-color: #0c0;
+}
+.highlight-false {
+    background-color: #c00;
+}
+.highlight-neutral {
+    background-color: #ffa500;
+}
